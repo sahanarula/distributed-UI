@@ -2,7 +2,8 @@ import { ActionTypes } from '../actions';
 
 const defaultState = {
     inTraffic: false,
-    isInitialized: false
+    isInitialized: false,
+    isAuthenticated: false
 };
 
 
@@ -12,10 +13,15 @@ export default (state = defaultState, action) => {
         switch(action.type) {
 
             case ActionTypes.INITIALIZE_APP:
-                console.log('Im here')
                 return {
                     ...state,
                     inTraffic: true
+                };
+
+            case ActionTypes.ON_FORM_CHANGE:
+                return {
+                    ...state,
+                    ...action.payload
                 };
 
             default:

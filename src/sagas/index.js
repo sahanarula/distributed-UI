@@ -10,13 +10,15 @@
 // https://yelouafi.github.io/redux-saga/
 import createSagaMiddleware, { takeEvery } from 'redux-saga';
 import dataSagas from './data';
+import connectSagas from './connect';
 
 // Saga middleware
 export let sagaMiddleware = createSagaMiddleware();
 
 // Run all the sagas
 export let sagas = [
-    ...dataSagas
+    ...dataSagas,
+    ...connectSagas
 ].map(createWatcher);
 
 // For each action/saga pair, the action should trigger the saga each time

@@ -31,7 +31,10 @@ html, body {
   font-size: large;
 }
 
-.content-container {
+.content-container.offset {
   margin-left: 255px;
+}
+
+.content-container {
   padding: 40px;
 }
