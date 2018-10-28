@@ -24,6 +24,13 @@ export default (state = defaultState, action) => {
                     ...action.payload
                 };
 
+            case ActionTypes.DONE_LOGIN:
+                return {
+                    ...state,
+                    isAuthenticated: true,
+                    jwtToken: action.payload
+                };
+
             default:
                 return state;
 

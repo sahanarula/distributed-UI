@@ -11,7 +11,7 @@ export default [
 function* doLogin ({ payload }) {
     yield put(Actions.doingLogin());
 
-    yield call(login, payload);
+    const jwtCookie = yield call(login, payload);
 
-    yield put(Actions.doneLogin());
+    yield put(Actions.doneLogin(jwtCookie));
 }
