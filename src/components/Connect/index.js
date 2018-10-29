@@ -46,7 +46,7 @@ const Connect = ({ onChange, onSubmit, email, password, device }) => {
                     value={device}
                     onChange={e => onChange({ device: e.target.value })}
                 >
-                    <option disabled selected value="">Select device</option>
+                    <option disabled value="none">Select device</option>
                     <option value="mobile">Mobile</option>
                     <option value="computer">Computer</option>
                     <option value="tablet">tablet</option>

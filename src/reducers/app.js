@@ -3,7 +3,10 @@ import { ActionTypes } from '../actions';
 const defaultState = {
     inTraffic: false,
     isInitialized: false,
-    isAuthenticated: false
+    isAuthenticated: false,
+    email: "sahiln123@gmail.com",
+    password: "helloworld",
+    device: "mobile"
 };
 
 

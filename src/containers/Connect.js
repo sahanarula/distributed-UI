@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Connect from '../components/Connect'
 import connect from "react-redux/es/connect/connect";
+import { Redirect } from 'react-router-dom';
 import { Actions } from '../actions';
 
 class ConnectContainer extends Component {
@@ -15,6 +16,7 @@ class ConnectContainer extends Component {
     }
 
     render() {
+        if (this.props.app.isAuthenticated) return <Redirect to={"/"} />;
         return <Connect onChange={ this.props.onFormChange } { ...this.props.app } onSubmit={this.onSubmit.bind(this)}/>
     }
 }

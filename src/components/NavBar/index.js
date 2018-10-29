@@ -14,7 +14,7 @@ const NavBar = (props) => {
             <ul className="navbar_list">
                 <li className={ classNames({ selected: path === '/' }) }><Link to="/">Home</Link></li>
                 <li className={ classNames({ selected: path === '/dashboard' }) }><Link to="/dashboard">Dashboard</Link></li>
-                <li className={ classNames({ selected: path === '/devices' }) }><Link to="/devices">Devices</Link></li>
+                <li className={ classNames({ selected: path === '/device' }) }><Link to="/device">Devices</Link></li>
                 <li className={ classNames({ selected: path === '/fragments' }) }><Link to="/fragments">Fragments</Link></li>
                 <li className={ classNames({ selected: path === '/configuration' }) }><Link to="/configuration">Configuration</Link></li>
             </ul>

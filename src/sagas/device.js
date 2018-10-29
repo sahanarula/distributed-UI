@@ -1,21 +1,21 @@
 import { call, put } from 'redux-saga/effects';
 import { ActionTypes, Actions } from '../actions';
-import { login } from './utils';
+import { getAllDevice } from './utils';
 
 // All data sagas to add to middleware.
 export default [
-    [ActionTypes.DO_LOGIN, doLogin]
+    [ActionTypes.GET_DEVICE, getDevice]
 ];
 
 // Do Login
-function* doLogin ({ payload }) {
-    yield put(Actions.doingLogin());
+function* getDevice ({ payload }) {
+    yield put(Actions.loadingDevice());
 
-    const response = yield call(login, payload);
+    const response = yield call(getAllDevice);
 
     if (!response.successful) {
         yield put(Actions.showMessage({type: "error", code: response.code}));
     } else {
-        yield put(Actions.doneLogin({ data: response.data }));
+        yield put(Actions.loadedDevice({ data: response.data }));
     }
 }
