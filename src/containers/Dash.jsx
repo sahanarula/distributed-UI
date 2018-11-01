@@ -6,15 +6,17 @@ import './App.css';
 
 class Dash extends Component {
     componentWillMount () {
-        this.LoadableComponent = Loadable({
-            loader: () => import('./Test'),
-            loading: () => <div>Loading...</div>,
+        this.LoadableCalendar = Loadable({
+            loader: () => import('./Calendar'),
+            loading: () => <div>Loading Calendar...</div>,
         });
-    }
-    componentWillReceiveUpdates () {
-        this.LoadableComponent = Loadable({
-            loader: () => import('./Test'),
-            loading: () => <div>Loading...</div>,
+        this.LoadableIoT = Loadable({
+            loader: () => import('./IoT'),
+            loading: () => <div>Loading IoT...</div>,
+        });
+        this.LoadableMuseum = Loadable({
+            loader: () => import('./Museum'),
+            loading: () => <div>Loading Museum...</div>,
         });
     }
 
@@ -24,7 +26,9 @@ class Dash extends Component {
     render() {
         return (
             <div className="App">
-                <this.LoadableComponent />
+                <this.LoadableCalendar />
+                <this.LoadableIoT />
+                <this.LoadableMuseum />
             </div>
         );
     }

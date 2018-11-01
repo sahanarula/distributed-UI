@@ -1,3 +1,5 @@
+/*global io*/
+
 import { call, put } from 'redux-saga/effects';
 import { ActionTypes, Actions } from '../actions';
 import { login } from './utils';
@@ -12,10 +14,12 @@ function* doLogin ({ payload }) {
     yield put(Actions.doingLogin());
 
     const response = yield call(login, payload);
-
     if (!response.successful) {
         yield put(Actions.showMessage({type: "error", code: response.code}));
     } else {
-        yield put(Actions.doneLogin({ data: response.data }));
+        io.sails.headers = {
+            Authorization: "Bearer " + response.data.token
+        };
+        yield put(Actions.doneLogin(response.data));
     }
 }

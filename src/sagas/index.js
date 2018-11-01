@@ -12,6 +12,7 @@ import createSagaMiddleware, { takeEvery } from 'redux-saga';
 import dataSagas from './data';
 import connectSagas from './connect';
 import deviceSagas from './device';
+import fragmentSagas from './fragments';
 
 // Saga middleware
 export let sagaMiddleware = createSagaMiddleware();
@@ -20,7 +21,8 @@ export let sagaMiddleware = createSagaMiddleware();
 export let sagas = [
     ...dataSagas,
     ...connectSagas,
-    ...deviceSagas
+    ...deviceSagas,
+    ...fragmentSagas
 ].map(createWatcher);
 
 // For each action/saga pair, the action should trigger the saga each time

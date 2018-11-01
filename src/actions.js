@@ -16,14 +16,19 @@ import camelCase from 'lodash/camelCase';
 let actionNames = normalize(
     // Data load resource actions
     ...loadAll(
-        'device'
+        'device',
+        'fragments'
     ),
     ...doAll(
-        'login'
+        'login',
+        'remove device',
+        'create fragment',
+        'remove fragment',
+        'update fragment'
     ),
     'initialize app',
     'on form change',
-    'show message'
+    'show message',
 );
 
 // Create multiple load action types (get, loading and loading)

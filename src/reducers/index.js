@@ -8,6 +8,8 @@
  **/
 import { combineReducers } from 'redux';
 import app from './app';
+import device from './device';
+import fragments from './fragments';
 
 /*
  * Reducer aggregator
@@ -16,5 +18,7 @@ export default combineReducers({
     /*
      * Populate reducers
      */
-    app
+    app,
+    device,
+    fragments
 });

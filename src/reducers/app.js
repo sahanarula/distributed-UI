@@ -31,7 +31,7 @@ export default (state = defaultState, action) => {
                 return {
                     ...state,
                     isAuthenticated: true,
-                    jwtToken: action.payload
+                    jwtToken: action.payload.token
                 };
 
             default:
