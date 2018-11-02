@@ -17,14 +17,18 @@ let actionNames = normalize(
     // Data load resource actions
     ...loadAll(
         'device',
-        'fragments'
+        'fragments',
+        'locations'
     ),
     ...doAll(
         'login',
         'remove device',
         'create fragment',
         'remove fragment',
-        'update fragment'
+        'update fragment',
+        'create location',
+        'remove location',
+        'update location'
     ),
     'initialize app',
     'on form change',

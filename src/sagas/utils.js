@@ -38,3 +38,9 @@ export const createFragment = (payload) => _requestAPI.POST('/fragments', payloa
 export const getAllFragments = () => _requestAPI.GET("/fragments");
 export const removeFragment = (id) => _requestAPI.DELETE("/fragments/" + id);
 export const updateFragment = (id, payload) => _requestAPI.PUT("/fragments/" + id, payload);
+
+// Locations Util
+export const createLocation = (payload) => _requestAPI.POST('/locations', payload);
+export const getAllLocations = () => _requestAPI.GET("/locations");
+export const removeLocation = (id) => _requestAPI.DELETE("/locations/" + id);
+export const updateLocation = (id, payload) => _requestAPI.PUT("/locations/" + id, payload);
