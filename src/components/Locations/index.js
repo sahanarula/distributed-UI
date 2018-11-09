@@ -12,11 +12,13 @@ import {
     DialogContentText,
     DialogTitle,
     TextField,
-    IconButton
+    IconButton,
+    Checkbox
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { withStyles } from '@material-ui/core/styles';
+import Configuration from '../Configuration';
 import './index.css';
 
 const styles = theme => ({
@@ -39,7 +41,7 @@ const styles = theme => ({
     }
 });
 
-const Locations = ({ configuration: { locations }, name, url, classes, toggleDialog, isDialogOpened, inEditMode, onChange, createLocation, removeLocation, updateLocation, editLocation }) => {
+const Locations = ({ configuration: { locations }, name, url, classes, toggleDialog, isDialogOpened, inEditMode, onChange, createLocation, removeLocation, updateLocation, editLocation, makeDefaultConfig }) => {
     return (
         <div id={"locations"}>
             <Button variant="outlined" color="primary" className={classes.locationButton} onClick={() => { toggleDialog(true) }}>
@@ -83,6 +85,8 @@ const Locations = ({ configuration: { locations }, name, url, classes, toggleDia
                             <TableRow>
                                 <TableCell className={classes.tableHeadCell} >Locations</TableCell>
                                 <TableCell className={classes.tableHeadCell} string={"true"}>Actions</TableCell>
+                                <TableCell className={classes.tableHeadCell} string={"true"}>Configuration</TableCell>
+                                <TableCell className={classes.tableHeadCell} string={"true"}>Default</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -99,6 +103,17 @@ const Locations = ({ configuration: { locations }, name, url, classes, toggleDia
                                             <IconButton onClick={() => editLocation(row.id)} aria-label="Delete" color="primary">
                                                 <EditIcon />
                                             </IconButton>
+                                        </TableCell>
+                                        <TableCell className={classes.tableCell} string={"true"}>
+                                            <Configuration config={ row.configurations } location={ row.id }/>
+                                        </TableCell>
+                                        <TableCell className={classes.tableCell} string={"true"}>
+                                            <Checkbox
+                                                checked={row.isDefault}
+                                                onChange={(e) => makeDefaultConfig(row.id, e.target.checked)}
+                                                value="checked"
+                                                indeterminate
+                                            />
                                         </TableCell>
                                     </TableRow>
                                 );

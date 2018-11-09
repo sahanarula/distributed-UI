@@ -1,25 +1,26 @@
 import { call, put } from 'redux-saga/effects';
 import { ActionTypes, Actions } from '../actions';
-import { getAllFragments, removeLocation, updateLocation, createLocation } from './utils';
+import { getAllLocations, removeLocation, updateLocation, createLocation, createConfiguration } from './utils';
 
 // All data sagas to add to middleware.
 export default [
     [ActionTypes.GET_LOCATIONS, getLocations],
     [ActionTypes.DO_CREATE_LOCATION, createNewLocation],
     [ActionTypes.DO_REMOVE_LOCATION, doRemoveLocation],
-    [ActionTypes.DO_UPDATE_LOCATION, doUpdateLocation]
+    [ActionTypes.DO_UPDATE_LOCATION, doUpdateLocation],
+    [ActionTypes.DO_CREATE_CONFIGURATION, doCreateConfiguration]
 ];
 
 // Get Locations
 function* getLocations ({ payload }) {
-    yield put(Actions.loadingFragments());
+    yield put(Actions.loadingLocations());
 
-    const response = yield call(getAllFragments);
+    const response = yield call(getAllLocations);
 
     if (!response.successful) {
         yield put(Actions.showMessage({type: "error", code: response.code}));
     } else {
-        yield put(Actions.loadedFragments(response.data));
+        yield put(Actions.loadedLocations(response.data));
     }
 }
 
@@ -39,7 +40,8 @@ function* doRemoveLocation ({ payload }) {
 // Update Location
 function* doUpdateLocation ({ payload }) {
     yield put(Actions.doingUpdateLocation());
-    const response = yield call(updateLocation, payload.id, { name: payload.name, url: payload.url });
+    const { id, ...rest } = payload;
+    const response = yield call(updateLocation, id, rest);
 
     if (!response.successful) {
         yield put(Actions.showMessage({type: "error", code: response.code}));
@@ -58,5 +60,17 @@ function* createNewLocation ({ payload }) {
         yield put(Actions.showMessage({type: "error", code: response.code}));
     } else {
         yield put(Actions.doneCreateLocation(response.data));
+    }
+}
+
+function* doCreateConfiguration ({ payload }) {
+    yield put(Actions.doingCreateConfiguration());
+
+    const response = yield call(createConfiguration, payload);
+
+    if (!response.successful) {
+        yield put(Actions.showMessage({type: "error", code: response.code}));
+    } else {
+        yield put(Actions.doneCreateConfiguration(response.data));
     }
 }

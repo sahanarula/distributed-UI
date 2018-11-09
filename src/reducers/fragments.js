@@ -6,6 +6,7 @@ const defaultState = {
 
 
 export default (state = defaultState, action) => {
+    var clonedFragments;
     try {
 
         switch(action.type) {
@@ -17,7 +18,7 @@ export default (state = defaultState, action) => {
                 };
 
             case ActionTypes.DONE_REMOVE_FRAGMENT:
-                var clonedFragments = state.fragments;
+                clonedFragments = state.fragments;
 
                 return {
                     ...state,
@@ -25,7 +26,7 @@ export default (state = defaultState, action) => {
                 };
 
             case ActionTypes.DONE_UPDATE_FRAGMENT:
-                var clonedFragments = state.fragments;
+                clonedFragments = state.fragments;
                 let newFragments = clonedFragments.map(fragment => {
                     if (fragment.id === action.payload[0].id) {
                         return action.payload[0];

@@ -62,10 +62,19 @@ class LocationsContainer extends Component {
         })
     }
 
+    makeDefaultConfig (id, set) {
+        const payload = {
+            id: id,
+            isDefault: set
+        };
+        this.props.doUpdateLocation(payload);
+    }
+
     render() {
         return <Locations { ...this.props } { ...this.state }
                           toggleDialog={this.toggleDialog.bind(this)}
                           onChange={this.onChange.bind(this)}
+                          makeDefaultConfig={this.makeDefaultConfig.bind(this)}
                           editLocation={this.editLocation.bind(this)}
                           removeLocation={this.removeLocation.bind(this)}
                           updateLocation={this.updateLocation.bind(this)}

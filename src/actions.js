@@ -23,12 +23,16 @@ let actionNames = normalize(
     ...doAll(
         'login',
         'remove device',
+
         'create fragment',
         'remove fragment',
         'update fragment',
+
         'create location',
         'remove location',
-        'update location'
+        'update location',
+
+        'create configuration'
     ),
     'initialize app',
     'on form change',

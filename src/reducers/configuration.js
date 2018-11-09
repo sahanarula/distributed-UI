@@ -6,6 +6,9 @@ const defaultState = {
 
 
 export default (state = defaultState, action) => {
+    var clonedLocations,
+        newLocations;
+
     try {
 
         switch(action.type) {
@@ -15,7 +18,10 @@ export default (state = defaultState, action) => {
                     ...state,
                     locations: [
                         ...state.locations,
-                        action.payload
+                        {
+                            ...action.payload,
+                            configurations: []
+                        }
                     ]
                 };
 
@@ -26,7 +32,7 @@ export default (state = defaultState, action) => {
                 };
 
             case ActionTypes.DONE_REMOVE_LOCATION:
-                var clonedLocations = state.locations;
+                clonedLocations = state.locations;
 
                 return {
                     ...state,
@@ -34,13 +40,37 @@ export default (state = defaultState, action) => {
                 };
 
             case ActionTypes.DONE_UPDATE_LOCATION:
-                var clonedLocations = state.locations;
-                let newLocations = clonedLocations.map(fragment => {
-                    if (fragment.id === action.payload[0].id) {
-                        return action.payload[0];
+                clonedLocations = state.locations;
+                newLocations = clonedLocations.map(location => {
+                    if (location.id === action.payload[0].id) {
+                        return {
+                            ...location,
+                            ...action.payload[0]
+                        }
                     }
 
-                    return fragment;
+                    return location;
+                });
+
+                return {
+                    ...state,
+                    locations: newLocations
+                };
+
+            case ActionTypes.DONE_CREATE_CONFIGURATION:
+                clonedLocations = state.locations;
+                newLocations = clonedLocations.map(location => {
+                    if (location.id === action.payload.location) {
+                        return {
+                            ...location,
+                            configurations: [
+                                ...location.configurations,
+                                action.payload
+                            ]
+                        }
+                    }
+
+                    return location;
                 });
 
                 return {

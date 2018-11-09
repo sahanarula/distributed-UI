@@ -44,3 +44,6 @@ export const createLocation = (payload) => _requestAPI.POST('/locations', payloa
 export const getAllLocations = () => _requestAPI.GET("/locations");
 export const removeLocation = (id) => _requestAPI.DELETE("/locations/" + id);
 export const updateLocation = (id, payload) => _requestAPI.PUT("/locations/" + id, payload);
+
+// Configurations util
+export const createConfiguration = (payload) => _requestAPI.POST("/configurations", payload);
