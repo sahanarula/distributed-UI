@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IoT = () => {
+const Reader = () => {
     return (
         <div>
             This is a test async IOT component
@@ -8,4 +8,4 @@ const IoT = () => {
     );
 };
 
-export default IoT;
+export default Reader;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Museum = () => {
+const Player = () => {
     return (
         <div>
             This is a test async Museum component
@@ -8,4 +8,4 @@ const Museum = () => {
     );
 };
 
-export default Museum;
+export default Player;

@@ -3,32 +3,42 @@ import { connect } from 'react-redux';
 import { Actions } from '../actions';
 import Loadable from 'react-loadable';
 import './App.css';
+import Renderer from "./Renderer";
 
 class Dash extends Component {
     componentWillMount () {
+        this.props.connectProximity();
         this.LoadableCalendar = Loadable({
             loader: () => import('./Calendar'),
             loading: () => <div>Loading Calendar...</div>,
         });
-        this.LoadableIoT = Loadable({
-            loader: () => import('./IoT'),
-            loading: () => <div>Loading IoT...</div>,
+        this.LoadableReader = Loadable({
+            loader: () => import('./Reader'),
+            loading: () => <div>Loading Reader...</div>,
         });
-        this.LoadableMuseum = Loadable({
-            loader: () => import('./Museum'),
-            loading: () => <div>Loading Museum...</div>,
+        this.LoadablePlayer = Loadable({
+            loader: () => import('./Player'),
+            loading: () => <div>Loading Player...</div>,
         });
     }
 
     componentDidMount () {
-        this.props.initializeApp()
+        document.addEventListener("enteredRegion", e => {
+            debugger;
+            this.props.doUpdateProximity({ location: e.detail.region.identifier });
+        })
     }
+
     render() {
+        const { app: { isLocationLoaded } } = this.props;
+
         return (
             <div className="App">
-                <this.LoadableCalendar />
-                <this.LoadableIoT />
-                <this.LoadableMuseum />
+                {
+                    isLocationLoaded
+                        ? <Renderer />
+                        : "Loading customized components..."
+                }
             </div>
         );
     }

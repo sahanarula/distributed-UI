@@ -46,9 +46,7 @@ class Configuration extends Component {
         isDialogOpened: false,
         inEditMode: false,
         deviceType: "",
-        top: "",
-        middle: "",
-        bottom: ""
+        fragment: ""
     };
 
     componentWillMount () {
@@ -73,7 +71,7 @@ class Configuration extends Component {
             device: this.state.deviceType,
             location: this.props.location,
             configuration: {
-                top: this.state.top,
+                fragment: this.state.fragment,
                 middle: this.state.middle,
                 bottom: this.state.bottom
             }
@@ -84,7 +82,7 @@ class Configuration extends Component {
     }
 
     render() {
-        const { isDialogOpened, inEditMode, deviceType, top, middle, bottom } = this.state;
+        const { isDialogOpened, inEditMode, deviceType, fragment } = this.state;
         const { classes, device: { devices }, fragments: { fragments }, config: configurations } = this.props;
 
         return (
@@ -93,7 +91,7 @@ class Configuration extends Component {
                     configurations.map(config => {
                         return (
                             <IconButton onClick={() => {}} aria-label="Delete" color="primary">
-                                <img src={`/images/${config.device.type}.png`} alt="" height={25}/>
+                                <img src={`/assets/images/${config.device.type}.png`} alt="" height={25}/>
                             </IconButton>
                         )
                     })
@@ -132,49 +130,13 @@ class Configuration extends Component {
                             </Select>
                         </FormControl>
                         <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="top-fragment">Top Fragment</InputLabel>
+                            <InputLabel htmlFor="bottom-fragment">Fragment</InputLabel>
                             <Select
-                                value={top}
+                                value={fragment}
                                 onChange={this.handleChange.bind(this)}
                                 inputProps={{
-                                    name: 'top',
-                                    id: 'top-fragment',
-                                }}
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                {
-                                    fragments.map(fragment => <MenuItem value={fragment.id}>{ fragment.name }</MenuItem>)
-                                }
-                            </Select>
-                        </FormControl>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="middle-fragment">Middle Fragment</InputLabel>
-                            <Select
-                                value={middle}
-                                onChange={this.handleChange.bind(this)}
-                                inputProps={{
-                                    name: 'middle',
-                                    id: 'middle-fragment',
-                                }}
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                {
-                                    fragments.map(fragment => <MenuItem value={fragment.id}>{ fragment.name }</MenuItem>)
-                                }
-                            </Select>
-                        </FormControl>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="bottom-fragment">Bottom Fragment</InputLabel>
-                            <Select
-                                value={bottom}
-                                onChange={this.handleChange.bind(this)}
-                                inputProps={{
-                                    name: 'bottom',
-                                    id: 'bottom-fragment',
+                                    name: 'fragment',
+                                    id: 'fragment',
                                 }}
                             >
                                 <MenuItem value="">

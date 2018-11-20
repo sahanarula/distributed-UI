@@ -6,7 +6,8 @@ const defaultState = {
     isAuthenticated: false,
     email: "sahiln123@gmail.com",
     password: "helloworld",
-    device: "mobile"
+    device: "mobile",
+    isLocationLoaded: false
 };
 
 
@@ -32,6 +33,16 @@ export default (state = defaultState, action) => {
                     ...state,
                     isAuthenticated: true,
                     jwtToken: action.payload.token
+                };
+
+            case ActionTypes.LOADED_PROXIMITY:
+                return {
+                    ...state,
+                    isLocationLoaded: true,
+                    currentLocation: {
+                        name: action.proximity.data.name,
+                        id: action.proximity.data.id
+                    }
                 };
 
             default:

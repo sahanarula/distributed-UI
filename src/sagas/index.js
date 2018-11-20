@@ -14,6 +14,7 @@ import connectSagas from './connect';
 import deviceSagas from './device';
 import fragmentSagas from './fragments';
 import configurationSagas from './configuration';
+import proximitySagas from './proximity';
 
 // Saga middleware
 export let sagaMiddleware = createSagaMiddleware();
@@ -24,7 +25,8 @@ export let sagas = [
     ...connectSagas,
     ...deviceSagas,
     ...fragmentSagas,
-    ...configurationSagas
+    ...configurationSagas,
+    ...proximitySagas
 ].map(createWatcher);
 
 // For each action/saga pair, the action should trigger the saga each time

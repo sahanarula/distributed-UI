@@ -18,7 +18,8 @@ let actionNames = normalize(
     ...loadAll(
         'device',
         'fragments',
-        'locations'
+        'locations',
+        'proximity'
     ),
     ...doAll(
         'login',
@@ -32,11 +33,14 @@ let actionNames = normalize(
         'remove location',
         'update location',
 
-        'create configuration'
+        'create configuration',
+
+        'update proximity'
     ),
     'initialize app',
     'on form change',
     'show message',
+    'connect proximity'
 );
 
 // Create multiple load action types (get, loading and loading)

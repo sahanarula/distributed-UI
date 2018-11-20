@@ -47,3 +47,7 @@ export const updateLocation = (id, payload) => _requestAPI.PUT("/locations/" + i
 
 // Configurations util
 export const createConfiguration = (payload) => _requestAPI.POST("/configurations", payload);
+
+// Proximity util
+export const getProximity = (payload) => _requestAPI.GET("/proximity", payload);
+export const updateProximity = (payload) => _requestAPI.PUT("/proximity", payload);

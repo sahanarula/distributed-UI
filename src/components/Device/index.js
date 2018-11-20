@@ -7,7 +7,7 @@ const MyComponent = ({ device, doRemoveDevice }) => {
             {
                 device.devices.map((dev, key) => {
                     return <div className="device-type-container" key={key}>
-                        <img src={`/images/${dev.type}.png`} alt={dev.type}/>
+                        <img src={`/assets/images/${dev.type}.png`} alt={dev.type}/>
                         <p>{ dev.type }</p>
                         <p>Owner: { dev.owner.email } </p>
                         <button className={"delete-btn"} onClick={e => doRemoveDevice(dev.id)}>Remove Device</button>
