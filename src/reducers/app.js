@@ -1,4 +1,5 @@
 import { ActionTypes } from '../actions';
+window.DEVICE = "mobile";
 
 const defaultState = {
     inTraffic: false,
@@ -30,6 +31,7 @@ export default (state = defaultState, action) => {
                 };
 
             case ActionTypes.DONE_LOGIN:
+                window.DEVICE = state.device;
                 return {
                     ...state,
                     isAuthenticated: true,
