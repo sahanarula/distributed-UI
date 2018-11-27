@@ -1,7 +1,8 @@
 import { ActionTypes } from '../actions';
 
 const defaultState = {
-    fragments: []
+    fragments: [],
+    isLoaded: false
 };
 
 
@@ -14,7 +15,8 @@ export default (state = defaultState, action) => {
             case ActionTypes.LOADED_FRAGMENTS:
                 return {
                     ...state,
-                    fragments: action.payload
+                    fragments: action.payload,
+                    isLoaded: true
                 };
 
             case ActionTypes.DONE_REMOVE_FRAGMENT:

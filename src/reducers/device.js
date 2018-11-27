@@ -1,7 +1,8 @@
 import { ActionTypes } from '../actions';
 
 const defaultState = {
-    devices: []
+    devices: [],
+    isLoaded: false
 };
 
 
@@ -13,7 +14,8 @@ export default (state = defaultState, action) => {
             case ActionTypes.LOADED_DEVICE:
                 return {
                     ...state,
-                    devices: action.payload
+                    devices: action.payload,
+                    isLoaded: true
                 };
 
             case ActionTypes.DONE_REMOVE_DEVICE:

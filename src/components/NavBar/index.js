@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import logo from './diversio.logo.png'
+import logo from './ubicomp.png'
 import signout from './signout.svg';
 import './navbar.css'
 

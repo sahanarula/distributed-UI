@@ -1,7 +1,8 @@
 import { ActionTypes } from '../actions';
 
 const defaultState = {
-    locations: []
+    locations: [],
+    isLoaded: false
 };
 
 
@@ -28,6 +29,7 @@ export default (state = defaultState, action) => {
             case ActionTypes.LOADED_LOCATIONS:
                 return {
                     ...state,
+                    isLoaded: true,
                     locations: action.payload
                 };
 

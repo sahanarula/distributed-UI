@@ -7,7 +7,8 @@ const defaultState = {
     email: "sahiln123@gmail.com",
     password: "helloworld",
     device: "mobile",
-    isLocationLoaded: false
+    isLocationLoaded: false,
+    forceUpdate: false
 };
 
 
@@ -40,9 +41,15 @@ export default (state = defaultState, action) => {
                     ...state,
                     isLocationLoaded: true,
                     currentLocation: {
-                        name: action.proximity.data.name,
-                        id: action.proximity.data.id
+                        name: action.payload.data.name,
+                        id: action.payload.data.id
                     }
+                };
+
+            case ActionTypes.SET_FORCE_UPDATE:
+                return {
+                    ...state,
+                    forceUpdate: action.payload
                 };
 
             default:

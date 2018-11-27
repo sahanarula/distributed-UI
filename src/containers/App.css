@@ -3,13 +3,17 @@
 html, body {
   background-color: #FAFBFC !important;
   font-family: 'Lato', sans-serif;
-  min-width: 1080px;
   font-size: 14px !important;
+}
+
+html, body, #root, .app-container {
+  height: 100%;
 }
 
 .App {
   text-align: center;
   display: flex;
+  height: 100%;
 }
 
 .App-logo {
@@ -33,9 +37,17 @@ html, body {
 }
 
 .content-container.offset {
-  margin-left: 255px;
 }
 
 .content-container {
   padding: 40px;
+  flex-grow: 1;
+}
+
+.content-container > div {
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
 }

@@ -13,7 +13,7 @@ class Dashboard extends Component {
 
         return (
             <BrowserRouter>
-                <div>
+                <div className={"app-container"}>
                     {
                         this.props.isAuthenticated
                             ? <NavBar />

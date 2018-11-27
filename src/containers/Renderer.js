@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 
 class Renderer extends Component {
     render() {
-        return (
-            <div>
-                
-            </div>
-        );
+        const COMPS = this.props.components;
+
+        return Object.keys(COMPS).map((cp, key) => {
+            const CP = COMPS[cp];
+            return <CP />
+        });
     }
 }
 

@@ -13,11 +13,11 @@ export default [
 
 function webSocketInitChannel () {
     return eventChannel(emitter => {
-        getProximity().then((proximity) => {
-            emitter({ type: ActionTypes.LOADED_PROXIMITY, proximity });
+        getProximity().then((payload) => {
+            emitter({ type: ActionTypes.LOADED_PROXIMITY, payload });
             io.socket.on('user', (payload, jwRes) => {
                 console.log("updated user");
-                debugger;
+                emitter({ type: ActionTypes.SET_FORCE_UPDATE, payload: true });
                 return emitter({ type: ActionTypes.LOADED_PROXIMITY, payload });
             })
         });

@@ -46,7 +46,9 @@ class Configuration extends Component {
         isDialogOpened: false,
         inEditMode: false,
         deviceType: "",
-        fragment: ""
+        fragmentOne: "",
+        fragmentTwo: "",
+        fragmentThree: ""
     };
 
     componentWillMount () {
@@ -71,9 +73,9 @@ class Configuration extends Component {
             device: this.state.deviceType,
             location: this.props.location,
             configuration: {
-                fragment: this.state.fragment,
-                middle: this.state.middle,
-                bottom: this.state.bottom
+                fragmentOne: this.state.fragmentOne,
+                fragmentTwo: this.state.fragmentTwo,
+                fragmentThree: this.state.fragmentThree
             }
         };
 
@@ -82,7 +84,7 @@ class Configuration extends Component {
     }
 
     render() {
-        const { isDialogOpened, inEditMode, deviceType, fragment } = this.state;
+        const { isDialogOpened, inEditMode, deviceType, fragmentOne, fragmentTwo, fragmentThree } = this.state;
         const { classes, device: { devices }, fragments: { fragments }, config: configurations } = this.props;
 
         return (
@@ -130,13 +132,49 @@ class Configuration extends Component {
                             </Select>
                         </FormControl>
                         <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="bottom-fragment">Fragment</InputLabel>
+                            <InputLabel htmlFor="fragment-one">Fragment One</InputLabel>
                             <Select
-                                value={fragment}
+                                value={fragmentOne}
                                 onChange={this.handleChange.bind(this)}
                                 inputProps={{
-                                    name: 'fragment',
-                                    id: 'fragment',
+                                    name: 'fragmentOne',
+                                    id: 'fragment-one',
+                                }}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {
+                                    fragments.map(fragment => <MenuItem value={fragment.id}>{ fragment.name }</MenuItem>)
+                                }
+                            </Select>
+                        </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="fragment-two">Fragment Two</InputLabel>
+                            <Select
+                                value={fragmentTwo}
+                                onChange={this.handleChange.bind(this)}
+                                inputProps={{
+                                    name: 'fragmentTwo',
+                                    id: 'fragment-two',
+                                }}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {
+                                    fragments.map(fragment => <MenuItem value={fragment.id}>{ fragment.name }</MenuItem>)
+                                }
+                            </Select>
+                        </FormControl>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel htmlFor="fragment-three">Fragment Three</InputLabel>
+                            <Select
+                                value={fragmentThree}
+                                onChange={this.handleChange.bind(this)}
+                                inputProps={{
+                                    name: 'fragmentThree',
+                                    id: 'fragment-three',
                                 }}
                             >
                                 <MenuItem value="">

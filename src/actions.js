@@ -40,7 +40,8 @@ let actionNames = normalize(
     'initialize app',
     'on form change',
     'show message',
-    'connect proximity'
+    'connect proximity',
+    'set force update'
 );
 
 // Create multiple load action types (get, loading and loading)
