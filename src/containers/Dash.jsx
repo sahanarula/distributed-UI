@@ -54,9 +54,15 @@ class Dash extends Component {
 
     componentDidMount () {
         document.addEventListener("enteredRegion", e => {
-            debugger;
-            this.props.doUpdateProximity({ location: e.detail.region.identifier });
-        })
+            if (this.props.app.currentLocation.name !== e.detail.region.identifier) {
+                this.props.doUpdateProximity({ location: e.detail.region.identifier });
+            }
+        });
+        document.addEventListener("exitRegion", e => {
+            if (this.props.app.currentLocation.name !== "Default") {
+                this.props.doUpdateProximity({ location: "Default" });
+            }
+        });
     }
 
     render() {
